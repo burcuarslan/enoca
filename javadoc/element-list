@@ -1,0 +1,11 @@
+com.example.enoca
+com.example.enoca.business.abstracts
+com.example.enoca.business.concretes
+com.example.enoca.business.requests
+com.example.enoca.business.responses
+com.example.enoca.business.rules
+com.example.enoca.core.utilities.exceptions
+com.example.enoca.core.utilities.mappers
+com.example.enoca.dataAccess.abstracts
+com.example.enoca.entities.concretes
+com.example.enoca.webApi.controllers
