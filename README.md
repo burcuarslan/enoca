@@ -4,7 +4,7 @@
 - PostgreSQL için PgAdmin4 kurulumu yapılmalıdır. https://www.postgresql.org/download/
 - PostgreSQL için bir veri tabanı oluşturulmalıdır.
 - application.properties dosyasında veri tabanı adı, kullanıcı adı ve şifre configure edilmelidir. 
-- Main class'ı başlatın depedenciesleri otomatik olarak indirilecektir. 
+- Main class'ı başlatın dependencyler otomatik olarak indirilecektir. 
 - http://localhost:8080/swagger-ui.html adresine gidin 
 - Swagger arayüzünden tüm isteklerinizi gönderebilir responsları görebilirsiniz.
 #### Postman aracılığıyla da isteklerinizi göndermek için şu endpointi kullanabilirsiniz. 
