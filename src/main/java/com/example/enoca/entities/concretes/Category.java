@@ -46,6 +46,6 @@ public class Category {
      * @JoinColumn(name = "category_id") : Product class'ı ile ilişkilendirilen category_id değerinin veritabanındaki karşılığı
      * @OneToMany(mappedBy = "category") : Category class'ı ile ilişkilendirilen Product class'ı ile ilişki kurulur.
      */
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE)
     private List<Product> products;
 }

@@ -4,6 +4,7 @@ import com.example.enoca.business.abstracts.CategoryService;
 import com.example.enoca.business.requests.CreateCategoryRequest;
 import com.example.enoca.business.requests.UpdateCategoryRequest;
 import com.example.enoca.business.responses.GetAllCategoriesResponse;
+import com.example.enoca.business.responses.GetCategoryResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,6 +43,12 @@ public class CategoriesController {
     @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable int id) {
         this.categoryService.delete(id);
+    }
+
+    @Operation(summary = "Get a category by id")
+    @GetMapping(value = "/{id}")
+    public GetCategoryResponse getById(@PathVariable int id) {
+        return this.categoryService.getById(id);
     }
 
 }

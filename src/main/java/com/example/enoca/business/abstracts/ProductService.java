@@ -3,6 +3,7 @@ package com.example.enoca.business.abstracts;
 import com.example.enoca.business.requests.CreateProductRequest;
 import com.example.enoca.business.requests.UpdateProductRequest;
 import com.example.enoca.business.responses.GetAllProductsResponse;
+import com.example.enoca.business.responses.GetProductResponse;
 import com.example.enoca.entities.concretes.Product;
 
 import java.util.List;
@@ -35,5 +36,12 @@ public interface ProductService {
      * @param id
      */
     void delete(int id);
+
+    /**
+     * Ürün id'sine göre ürün getirir
+     * @param id
+     * @return
+     */
+    GetProductResponse getById(int id);
 
 }

@@ -4,6 +4,7 @@ import com.example.enoca.business.abstracts.ProductService;
 import com.example.enoca.business.requests.CreateProductRequest;
 import com.example.enoca.business.requests.UpdateProductRequest;
 import com.example.enoca.business.responses.GetAllProductsResponse;
+import com.example.enoca.business.responses.GetProductResponse;
 import com.example.enoca.entities.concretes.Product;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -82,6 +83,12 @@ public class ProductsController {
     @DeleteMapping(value = "/{id}")
     public void delete(@PathVariable int id) {
         this.productService.delete(id);
+    }
+
+    @Operation(summary = "Get a product by id")
+    @GetMapping(value = "/{id}")
+    public GetProductResponse getById(@PathVariable int id) {
+        return this.productService.getById(id);
     }
 
 }

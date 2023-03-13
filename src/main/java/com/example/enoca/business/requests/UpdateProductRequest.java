@@ -24,7 +24,7 @@ public class UpdateProductRequest {
 
         @NotNull
 
-        private int unitPrice;
+        private double unitPrice;
 
         @NotNull
 

@@ -6,6 +6,7 @@ import com.example.enoca.business.requests.UpdateCategoryRequest;
 import com.example.enoca.business.requests.UpdateProductRequest;
 import com.example.enoca.business.responses.GetAllCategoriesResponse;
 import com.example.enoca.business.responses.GetAllProductsResponse;
+import com.example.enoca.business.responses.GetCategoryResponse;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface CategoryService {
     void update(UpdateCategoryRequest updateCategoryRequest);
 
     void delete(int id);
+
+    GetCategoryResponse getById(int id);
 }

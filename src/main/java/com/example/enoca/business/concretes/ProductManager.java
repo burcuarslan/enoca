@@ -4,11 +4,13 @@ import com.example.enoca.business.abstracts.ProductService;
 import com.example.enoca.business.requests.CreateProductRequest;
 import com.example.enoca.business.requests.UpdateProductRequest;
 import com.example.enoca.business.responses.GetAllProductsResponse;
+import com.example.enoca.business.responses.GetProductResponse;
 import com.example.enoca.business.rules.CategoryBusinessRules;
 import com.example.enoca.business.rules.ProductBusinessRules;
 import com.example.enoca.core.utilities.mappers.ModelMapperService;
 import com.example.enoca.dataAccess.abstracts.ProductRepository;
 import com.example.enoca.entities.concretes.Product;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +26,7 @@ public class ProductManager implements ProductService {
 
     private CategoryBusinessRules categoryBusinessRules;
 
+    @Autowired
     public ProductManager(ProductRepository productRepository, ModelMapperService modelMapperService, ProductBusinessRules productBusinessRules, CategoryBusinessRules categoryBusinessRules) {
         this.productRepository = productRepository;
         this.modelMapperService = modelMapperService;
@@ -70,5 +73,14 @@ public class ProductManager implements ProductService {
     public void delete(int id) {
         this.productBusinessRules.checkIfProductIdExists(id);
         this.productRepository.deleteById(id);
+    }
+
+
+    @Override
+    public GetProductResponse getById(int id) {
+        this.productBusinessRules.checkIfProductIdExists(id);
+        Product product= this.productRepository.findById(id).get();
+//        return product;
+        return this.modelMapperService.forResponse().map(product, GetProductResponse.class);
     }
 }

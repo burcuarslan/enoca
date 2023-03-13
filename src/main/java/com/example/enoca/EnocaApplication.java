@@ -3,13 +3,9 @@ package com.example.enoca;
 import com.example.enoca.core.utilities.exceptions.BusinessException;
 import com.example.enoca.core.utilities.exceptions.ProblemDetails;
 import com.example.enoca.core.utilities.exceptions.ValidationProblemDetails;
-
-import io.swagger.v3.oas.annotations.*;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
-import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.slf4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +15,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 
@@ -39,7 +34,7 @@ import java.util.HashMap;
                 "Database olarak postgresql kullanılmıştır." +
                 "DataAccess katmanında JPA kullanılmıştır." +
                 "Business katmanında ise ModelMapper kullanılmıştır." +
-                "Validation işlemleri için Hibernate Validator kullanılmıştır."))
+                "Validation işlemleri için javax.validation kullanılmıştır."))
 public class EnocaApplication {
 
 //    Logger logger = org.slf4j.LoggerFactory.getLogger(EnocaApplication.class);
@@ -58,13 +53,12 @@ public class EnocaApplication {
 
     /**
      * Tüm controller'lar için ortak hata yakalama işlemlerini yapar.
-     *
      * @param ex BusinessException tipindeki hata
      * @return ProblemDetails tipinde hata mesajı döner.
      */
     @ExceptionHandler
     @ResponseStatus(code = org.springframework.http.HttpStatus.BAD_REQUEST)
-    public ProblemDetails handleException(BusinessException ex) throws IOException {
+    public ProblemDetails handleException(BusinessException ex) {
         ProblemDetails problemDetails = new ProblemDetails();
         problemDetails.setMessage(ex.getMessage());
 //        logger.error(ex.getMessage());

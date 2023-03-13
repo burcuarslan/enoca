@@ -1,6 +1,5 @@
 package com.example.enoca.business.responses;
 
-import com.example.enoca.entities.concretes.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetAllProductsResponse {
-
+public class GetProductResponse {
     private int id;
     private String productName;
 
@@ -17,9 +15,10 @@ public class GetAllProductsResponse {
 
     private int unitsInStock;
 
+    private int quantityPerUnit;
+
     /**
      * JPA ile ilişkilendirilmiş categoryId değerini alır ve Category tablosundaki categoryId ile ilişkilendirir ve CategoryName değerini alır.
      */
     private String categoryName;
-
 }

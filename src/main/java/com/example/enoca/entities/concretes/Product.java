@@ -4,6 +4,7 @@ import com.example.enoca.entities.concretes.Category;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -61,7 +62,8 @@ public class Product {
      * @ManyToOne : Çoklu veri ile tekli veri arasında ilişki kurar. Categori ile Product arasında ilişki kurulur.
      * @JoinColumn(name = "category_id") : category_id değerinin veritabanındaki karşılığı
      */
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "category_id")
+
     private Category category;
 }

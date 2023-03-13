@@ -24,14 +24,17 @@ public class CreateProductRequest {
     private String productName;
 
     @NotNull
-    private int unitPrice;
+    private double unitPrice;
     @NotNull
 
     private int unitsInStock;
     @NotNull
 
     private int quantityPerUnit;
+    /**
+     * @Column(name = "category_id") : categoryId değerinin veritabanındaki karşılığı
+     * JPA bunu algılar ve category_id ile ilişkilendirir.
+     */
     @NotNull
-
     private int categoryId;
 }
