@@ -8,6 +8,7 @@
 - Proje Lombok kullanmaktadır.
 - ModelMapper kullanarak Request ve Response DTO'ları ile Entity arasında mapleme işlemi yapılmıştır.
 - Exception Handling yapılmıştır.
+- javadoc klasörü altında JavaDoc dökümantasyon dosyaları bulunmaktadır. İsterseniz bu dosyalardan yararlanabilirsiniz. isterseniz de swagger arayüzünden isteklerinizi gönderebilir ve responsları görebilirsiniz.
 
 ### Requirements
 - PostgreSQL için PgAdmin4 kurulumu yapılmalıdır. https://www.postgresql.org/download/
