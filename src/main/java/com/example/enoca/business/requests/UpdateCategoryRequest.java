@@ -14,9 +14,8 @@ import javax.validation.constraints.Size;
 public class UpdateCategoryRequest {
 
     @NotNull
-    @NotBlank
-    @Size(min = 0)
-    private int categoryId;
+
+    private int id;
 
     @NotNull
     @NotBlank

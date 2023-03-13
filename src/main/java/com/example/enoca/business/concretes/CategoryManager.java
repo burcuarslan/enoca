@@ -4,6 +4,7 @@ import com.example.enoca.business.abstracts.CategoryService;
 import com.example.enoca.business.requests.CreateCategoryRequest;
 import com.example.enoca.business.requests.UpdateCategoryRequest;
 import com.example.enoca.business.responses.GetAllCategoriesResponse;
+import com.example.enoca.business.rules.CategoryBusinessRules;
 import com.example.enoca.core.utilities.mappers.ModelMapperService;
 import com.example.enoca.dataAccess.abstracts.CategoryRepository;
 import com.example.enoca.entities.concretes.Category;
@@ -17,11 +18,13 @@ public class CategoryManager implements CategoryService {
     private CategoryRepository categoryRepository;
     private ModelMapperService modelMapperService;
 
-    public CategoryManager(CategoryRepository categoryRepository, ModelMapperService modelMapperService) {
+    private CategoryBusinessRules categoryBusinessRules;
+
+    public CategoryManager(CategoryRepository categoryRepository, ModelMapperService modelMapperService, CategoryBusinessRules categoryBusinessRules) {
         this.categoryRepository = categoryRepository;
         this.modelMapperService = modelMapperService;
+        this.categoryBusinessRules = categoryBusinessRules;
     }
-
     @Override
     public List<GetAllCategoriesResponse> getAll() {
         List<Category> categories = categoryRepository.findAll();
@@ -34,6 +37,7 @@ public class CategoryManager implements CategoryService {
 
     @Override
     public void add(CreateCategoryRequest createCategory) {
+        this.categoryBusinessRules.checkIfCategoryNameExists(createCategory.getCategoryName());
         Category category = this.modelMapperService.forRequest().map(createCategory, Category.class);
 
         this.categoryRepository.save(category);
@@ -41,6 +45,7 @@ public class CategoryManager implements CategoryService {
 
     @Override
     public void update(UpdateCategoryRequest updateCategoryRequest) {
+        this.categoryBusinessRules.checkIfCategoryIdExists(updateCategoryRequest.getId());
         Category category = this.modelMapperService.forRequest().map(updateCategoryRequest, Category.class);
 
         this.categoryRepository.save(category);
@@ -48,6 +53,7 @@ public class CategoryManager implements CategoryService {
 
     @Override
     public void delete(int id) {
+        this.categoryBusinessRules.checkIfCategoryIdExists(id);
         this.categoryRepository.deleteById(id);
     }
 }

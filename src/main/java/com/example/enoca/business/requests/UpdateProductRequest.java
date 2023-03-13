@@ -14,8 +14,7 @@ import javax.validation.constraints.Size;
 public class UpdateProductRequest {
 
         @NotNull
-        @NotBlank
-        @Size(min = 0)
+
         private int id;
 
         @NotNull
@@ -24,22 +23,19 @@ public class UpdateProductRequest {
         private String productName;
 
         @NotNull
-        @NotBlank
-        @Size(min = 0)
+
         private int unitPrice;
 
         @NotNull
-        @NotBlank
-        @Size(min = 0)
+
         private int unitsInStock;
 
         @NotNull
-        @NotBlank
-        @Size(min = 0)
+
+
         private int quantityPerUnit;
 
         @NotNull
-        @NotBlank
 
         private int categoryId;
 }
